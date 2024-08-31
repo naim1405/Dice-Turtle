@@ -1,13 +1,14 @@
 import turtle
 from PIL import Image
-t = turtle.Turtle()
-t.penup()
-t.goto(-300,300)
-t.pendown()
-t.speed(0)
 
 class Board:
     def __init__(self):
+
+        self.t = turtle.Turtle()
+        self.t.penup()
+        self.t.goto(-300,300)
+        self.t.pendown()
+        self.t.speed(0)
         self.board_size = 15
         self.box_size = 41
         self.path = [[[0,0]]] * 8
@@ -16,10 +17,10 @@ class Board:
         self.create_board()
 
     def create_box(self,size, direction):
-        t.pendown()
+        self.t.pendown()
         for _ in range(4):
-            t.forward(size)
-            t.right(90 * direction)
+            self.t.forward(size)
+            self.t.right(90 * direction)
 
     def create_left_path(self, direction, l, m , r):
         left = []
@@ -28,7 +29,7 @@ class Board:
         for i in range(3):
             for j in range(6):
                 self.create_box(self.box_size,direction)
-                coor = [t.xcor() - 21, t.ycor() + 21]
+                coor = [self.t.xcor() - 21, self.t.ycor() + 21]
                 if i == 0:
                     left.append(coor)
                 elif i == 2:
@@ -37,11 +38,11 @@ class Board:
                     middle.append(coor)
                 if i == 1 and j == 5:
                     left.append(coor)
-                t.forward(self.box_size)
-            t.backward(6 * self.box_size)
-            t.right(90 * direction)
-            t.forward(self.box_size)
-            t.left(90 * direction)
+                self.t.forward(self.box_size)
+            self.t.backward(6 * self.box_size)
+            self.t.right(90 * direction)
+            self.t.forward(self.box_size)
+            self.t.left(90 * direction)
         self.path[l] = left
         self.path[r] = right
         middle.reverse()
@@ -55,7 +56,7 @@ class Board:
         for i in range(3):
             for j in range(6):
                 self.create_box(self.box_size,direction)
-                coor = [t.xcor() + 21, t.ycor() - 21]
+                coor = [self.t.xcor() + 21, self.t.ycor() - 21]
                 if i == 0:
                     left.append(coor)
                 elif i == 2:
@@ -64,11 +65,11 @@ class Board:
                     middle.append(coor)
                 if i == 1 and j== 5:
                     left.append(coor)
-                t.forward(self.box_size)
-            t.backward(6 * self.box_size)
-            t.right(90 * direction)
-            t.forward(self.box_size)
-            t.left(90 * direction)
+                self.t.forward(self.box_size)
+            self.t.backward(6 * self.box_size)
+            self.t.right(90 * direction)
+            self.t.forward(self.box_size)
+            self.t.left(90 * direction)
         self.path[l] = left
         self.path[r] = right
         middle.reverse()
@@ -82,7 +83,7 @@ class Board:
         for i in range(6):
             for j in range(3):
                 self.create_box(self.box_size, direction)
-                coor = [t.xcor() + 21, t.ycor() - 21]
+                coor = [self.t.xcor() + 21, self.t.ycor() - 21]
                 if j == 0:
                     left.insert(0, coor)
                 elif j == 2:
@@ -91,11 +92,11 @@ class Board:
                     middle.append(coor)
                 if j == 1 and i == 0:
                     right.append(coor)
-                t.forward(self.box_size)
-            t.backward(3 * self.box_size)
-            t.right(90 * direction)
-            t.forward(self.box_size)
-            t.left(90 * direction)
+                self.t.forward(self.box_size)
+            self.t.backward(3 * self.box_size)
+            self.t.right(90 * direction)
+            self.t.forward(self.box_size)
+            self.t.left(90 * direction)
         
 
         self.path[l] = left
@@ -109,7 +110,7 @@ class Board:
         for i in range(6):
             for j in range(3):
                 self.create_box(self.box_size, direction)
-                coor = [t.xcor() - 21, t.ycor() - 21]
+                coor = [self.t.xcor() - 21, self.t.ycor() - 21]
                 if j == 0:
                     left.append(coor)
                 elif j == 2:
@@ -118,11 +119,11 @@ class Board:
                     middle.append(coor)
                 if j == 1 and i == 5:
                     left.append(coor)
-                t.forward(self.box_size)
-            t.backward(3 * self.box_size)
-            t.right(90 * direction)
-            t.forward(self.box_size)
-            t.left(90 * direction)
+                self.t.forward(self.box_size)
+            self.t.backward(3 * self.box_size)
+            self.t.right(90 * direction)
+            self.t.forward(self.box_size)
+            self.t.left(90 * direction)
         
 
         self.path[l] = left
@@ -138,18 +139,19 @@ class Board:
 
     def create_board(self):
         self.create_box(self.board_size * self.box_size, 1)
-        t.forward(6 * self.box_size)
+        self.t.forward(6 * self.box_size)
         self.create_top_path(1, 7,0,0)
-        t.forward(3 * self.box_size)
+        self.t.forward(3 * self.box_size)
         self.create_right_path(1, 1 ,1, 2)
-        t.right(180)
+        self.t.right(180)
         self.create_bottom_path(-1, 3, 2, 4)
-        t.forward(3 * self.box_size)
-        t.right(90)
-        t.forward(6 * self.box_size)
-        t.left(90)
+        self.t.forward(3 * self.box_size)
+        self.t.right(90)
+        self.t.forward(6 * self.box_size)
+        self.t.left(90)
         self.create_left_path(1,5,3,6)
         self.create_path()
+        self.t.hideturtle()
 
 if __name__ == "__main__":
     b = Board()
