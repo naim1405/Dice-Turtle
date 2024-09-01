@@ -21,121 +21,82 @@ class Board:
         for _ in range(4):
             self.t.forward(size)
             self.t.right(90 * direction)
+    def create_inactive_zone(self):
+        self.t.penup()
+        self.t.pencolor("red")
+        self.t.goto(-300,300)
+        self.t.right(180)
+        self.t.forward(self.box_size)
+        self.t.right(90)
+        self.t.forward(self.box_size)
+        # 1
+        self.t.pencolor("green")
+        for _ in range(4):
+            self.create_box(self.box_size, 1)
+            self.t.forward(self.box_size)
+        self.t.penup()
+        self.t.forward(5 * self.box_size)
+        # 4
+        self.t.pencolor("red")
+        for _ in range(4):
+            self.create_box(self.box_size, 1)
+            self.t.forward(self.box_size)
+        self.t.penup()
+        self.t.goto((-300 + (15* self.box_size)),300 )
+        self.t.forward(self.box_size)
+        # 2
+        self.t.pencolor("yellow")
+        for _ in range(4):
+            self.create_box(self.box_size, 1)
+            self.t.forward(self.box_size)
+        self.t.penup()
+        self.t.forward(5 * self.box_size)
+        # 3
+        self.t.pencolor("blue")
+        for _ in range(4):
+            self.create_box(self.box_size, 1)
+            self.t.forward(self.box_size)
+        self.t.penup()
 
     def create_left_path(self, direction, l, m , r):
-        left = []
-        right = []
-        middle = []
         for i in range(3):
             for j in range(6):
                 self.create_box(self.box_size,direction)
-                coor = [self.t.xcor() - 21, self.t.ycor() + 21]
-                if i == 0:
-                    left.append(coor)
-                elif i == 2:
-                    right.insert(0,coor)
-                elif i == 1:
-                    middle.append(coor)
-                if i == 1 and j == 5:
-                    left.append(coor)
                 self.t.forward(self.box_size)
             self.t.backward(6 * self.box_size)
             self.t.right(90 * direction)
             self.t.forward(self.box_size)
             self.t.left(90 * direction)
-        self.path[l] = left
-        self.path[r] = right
-        middle.reverse()
-        middle.append([-300 + 21 + (7 * self.box_size), 300 - 21 - (7 * self.box_size)])
-        self.final_path[m] = middle
 
     def create_right_path(self, direction, l, m , r):
-        left = []
-        right = []
-        middle = []
         for i in range(3):
             for j in range(6):
                 self.create_box(self.box_size,direction)
-                coor = [self.t.xcor() + 21, self.t.ycor() - 21]
-                if i == 0:
-                    left.append(coor)
-                elif i == 2:
-                    right.insert(0,coor)
-                elif i == 1:
-                    middle.append(coor)
-                if i == 1 and j== 5:
-                    left.append(coor)
                 self.t.forward(self.box_size)
             self.t.backward(6 * self.box_size)
             self.t.right(90 * direction)
             self.t.forward(self.box_size)
             self.t.left(90 * direction)
-        self.path[l] = left
-        self.path[r] = right
-        middle.reverse()
-        middle.append([-300 + 21 + (7 * self.box_size), 300 - 21 - (7 * self.box_size)])
-        self.final_path[m] = middle
     
     def create_top_path(self, direction, l, m, r):
-        left = []
-        middle = []
-        right = []
         for i in range(6):
             for j in range(3):
                 self.create_box(self.box_size, direction)
-                coor = [self.t.xcor() + 21, self.t.ycor() - 21]
-                if j == 0:
-                    left.insert(0, coor)
-                elif j == 2:
-                    right.append(coor)
-                elif j == 1 and i != 0:
-                    middle.append(coor)
-                if j == 1 and i == 0:
-                    right.append(coor)
                 self.t.forward(self.box_size)
             self.t.backward(3 * self.box_size)
             self.t.right(90 * direction)
             self.t.forward(self.box_size)
             self.t.left(90 * direction)
         
-
-        self.path[l] = left
-        self.path[r] = right
-        middle.append([-300 + 21 + (7 * self.box_size), 300 - 21 - (7 * self.box_size)])
-        self.final_path[m] = middle
     def create_bottom_path(self, direction, l, m, r):
-        left = []
-        middle = []
-        right = []
         for i in range(6):
             for j in range(3):
                 self.create_box(self.box_size, direction)
-                coor = [self.t.xcor() - 21, self.t.ycor() - 21]
-                if j == 0:
-                    left.append(coor)
-                elif j == 2:
-                    right.insert(0,coor)
-                elif j == 1:
-                    middle.append(coor)
-                if j == 1 and i == 5:
-                    left.append(coor)
                 self.t.forward(self.box_size)
             self.t.backward(3 * self.box_size)
             self.t.right(90 * direction)
             self.t.forward(self.box_size)
             self.t.left(90 * direction)
-        
-
-        self.path[l] = left
-        self.path[r] = right
-        middle.reverse()
-        middle.append([-300 + 21 + (7 * self.box_size), 300 - 21 - (7 * self.box_size)])
-        self.final_path[m] = middle
-
-    def create_path(self):
-        for j in self.path:
-            for i in j:
-                self.piece_path.append(i)
 
     def create_board(self):
         self.create_box(self.board_size * self.box_size, 1)
@@ -150,7 +111,7 @@ class Board:
         self.t.forward(6 * self.box_size)
         self.t.left(90)
         self.create_left_path(1,5,3,6)
-        self.create_path()
+        self.create_inactive_zone()
         self.t.hideturtle()
 
 if __name__ == "__main__":
