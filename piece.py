@@ -16,24 +16,22 @@ class Piece(Turtle):
         self.is_active = True
         self.penup()
         if player == 1:
-            self.origin = [-300 + (3 * self.box_size), 300 - (3 * self.box_size)]
             self.fillcolor("green")
         if player == 2:
-            self.origin = [-300 + (12 * self.box_size), 300 - (3 * self.box_size)] 
             self.fillcolor("yellow")
         if player == 3:
-            self.origin = [-300 + (12 * self.box_size), 300 - (12 * self.box_size)]
             self.fillcolor("blue")
         if player == 4:
-            self.origin = [-300 + (3 * self.box_size), 300 - (12 * self.box_size)]
             self.fillcolor("red")
 
-        # self.goto(self.origin)
         # self.goto(self.path[self.current_pos])
         self.goto(inactive_pos)
+        self.onclick(fun=self.handle_click)
 
+    def handle_click(self,x,y):
+        self.move(1)
+        
     def move(self, step):
         self.current_pos = self.current_pos + step
         self.goto(self.path[self.current_pos])
-        print(self.path[self.current_pos])
 
