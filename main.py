@@ -12,16 +12,14 @@ screen.setup(width=800, height=800)
 screen.title("Dice")
 screen.listen()
 screen._root.iconbitmap("./resources/Dice.ico")
-screen.addshape("./dice.gif")
-screen.addshape("./dice_1.gif")
-# screen.addshape("./resources/dice_2.png")
-# screen.addshape("./resources/dice_3.png")
-# screen.addshape("./resources/dice_4.png")
-# screen.addshape("./resources/dice_5.png")
-# screen.addshape("./resources/dice_6.png")
+screen.addshape("./resources/dice_2.gif")
+screen.addshape("./resources/dice_1.gif")
+screen.addshape("./resources/dice_3.gif")
+screen.addshape("./resources/dice_4.gif")
+screen.addshape("./resources/dice_5.gif")
+screen.addshape("./resources/dice_6.gif")
 
-
-dice = Dice()
+# dice = Dice()
 
 board = Board() 
 player_1 = []
@@ -55,6 +53,9 @@ for i in range(4):
 # p4 = Piece(4,path_4, inactive_pos_1[3])
 
 # debug
+def handle_click(x,y):
+    print(x,y)
+screen.onclick(handle_click)
 # screen.onkeypress(lambda: p1.move(1), "Left")
 # screen.onkeypress(lambda: p2.move(1), "Up")
 # screen.onkeypress(lambda: p3.move(1), "Right")
