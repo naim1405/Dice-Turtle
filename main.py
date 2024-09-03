@@ -39,16 +39,16 @@ player_4 = []
 for i in range(4):
     for j in range(4):
         if i == 0:
-            p = Piece(1,path_1, inactive_pos_1[j], active_pos_1[j])
+            p = Piece(i,path_1, inactive_pos_1[j], active_pos_1[j])
             player_1.append(p)
         elif i == 1:
-            p = Piece(2,path_2, inactive_pos_2[j], active_pos_2[j])
+            p = Piece(i,path_2, inactive_pos_2[j], active_pos_2[j])
             player_2.append(p)
         elif i == 2:
-            p = Piece(3,path_3, inactive_pos_3[j], active_pos_3[j])
+            p = Piece(i,path_3, inactive_pos_3[j], active_pos_3[j])
             player_3.append(p)
         elif i == 3 :
-            p = Piece(4,path_4, inactive_pos_4[j], active_pos_4[j])
+            p = Piece(i,path_4, inactive_pos_4[j], active_pos_4[j])
             player_4.append(p)
     
 
@@ -65,7 +65,7 @@ screen.onkeypress(p.handle_player_change, " ")
 # debug
 def handle_click(x,y):
     print(x,y)
-screen.onclick(handle_click)
+# screen.onclick(handle_click)
 # screen.onkeypress(lambda: p1.move(1), "Left")
 # screen.onkeypress(lambda: p2.move(1), "Up")
 # screen.onkeypress(lambda: p3.move(1), "Right")

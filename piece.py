@@ -1,5 +1,7 @@
 from turtle import Turtle
 
+from player import Player
+
 class Piece(Turtle):
     def __init__(self,player, path, inactive_pos, active_pos):
         super().__init__()
@@ -32,6 +34,7 @@ class Piece(Turtle):
         self.move(1)
         
     def move(self, step):
-        self.current_pos = self.current_pos + step
-        self.goto(self.path[self.current_pos])
+        if Player.current_player == self.player:
+            self.current_pos = self.current_pos + step
+            self.goto(self.path[self.current_pos])
 
