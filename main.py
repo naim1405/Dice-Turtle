@@ -4,6 +4,7 @@ from piece import Piece
 from turtle import Screen
 from piece_path import *
 from dice import Dice
+from player import Player
 
 game_is_on = True
 
@@ -19,14 +20,20 @@ screen.addshape("./resources/dice_4.gif")
 screen.addshape("./resources/dice_5.gif")
 screen.addshape("./resources/dice_6.gif")
 
-# dice = Dice()
-
+#Board
 board = Board() 
+
+
+# Dice
+dice = Dice()
+
+
+#Player
+
 player_1 = []
 player_2 = []
 player_3 = []
 player_4 = []
-
 
 
 for i in range(4):
@@ -43,8 +50,11 @@ for i in range(4):
         elif i == 3 :
             p = Piece(4,path_4, inactive_pos_4[j], active_pos_4[j])
             player_4.append(p)
-            
     
+
+
+p = Player()
+screen.onkeypress(p.handle_player_change, " ")
 
 # test
 # p1 = Piece(1,path_1, inactive_pos_1[0])
