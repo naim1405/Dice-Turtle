@@ -2,10 +2,26 @@ import turtle
 from board import Board
 from piece import Piece
 from turtle import Screen
-
 from piece_path import *
+from dice import Dice
 
 game_is_on = True
+
+screen = Screen()
+screen.setup(width=800, height=800)
+screen.title("Dice")
+screen.listen()
+screen._root.iconbitmap("./resources/Dice.ico")
+screen.addshape("./dice.gif")
+screen.addshape("./dice_1.gif")
+# screen.addshape("./resources/dice_2.png")
+# screen.addshape("./resources/dice_3.png")
+# screen.addshape("./resources/dice_4.png")
+# screen.addshape("./resources/dice_5.png")
+# screen.addshape("./resources/dice_6.png")
+
+
+dice = Dice()
 
 board = Board() 
 player_1 = []
@@ -38,16 +54,10 @@ for i in range(4):
 # p3 = Piece(3,path_3, inactive_pos_1[2])
 # p4 = Piece(4,path_4, inactive_pos_1[3])
 
-screen = Screen()
-screen.setup(width=800, height=800)
-screen.listen()
 # debug
 # screen.onkeypress(lambda: p1.move(1), "Left")
 # screen.onkeypress(lambda: p2.move(1), "Up")
 # screen.onkeypress(lambda: p3.move(1), "Right")
 # screen.onkeypress(lambda: p4.move(1), "Down")
 
-
-
-while game_is_on:
-    screen.update()
+turtle.mainloop()

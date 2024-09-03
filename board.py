@@ -15,6 +15,7 @@ class Board:
         self.final_path = [0] * 4
         self.piece_path = []
         self.create_board()
+        
 
     def create_box(self,size, direction):
         self.t.pendown()

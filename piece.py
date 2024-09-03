@@ -1,5 +1,4 @@
-from turtle import Turtle, Screen
-screen = Screen()
+from turtle import Turtle
 
 class Piece(Turtle):
     def __init__(self,player, path, inactive_pos, active_pos):
