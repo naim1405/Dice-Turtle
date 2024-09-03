@@ -15,7 +15,6 @@ class Dice(Turtle):
         self.consecutive_six = 0
     def roll(self):
         random_dice = randint(1,6)
-        print(random_dice)
         if random_dice == 6:
             self.consecutive_six += 1
         else:
