@@ -6,6 +6,7 @@ class Piece(Turtle):
         self.shape("circle")
         self.pensize(15)
         self.pencolor("white")
+        self.speed(0)
         self.player = player
         self.path = path
         self.inactive_pos = inactive_pos
