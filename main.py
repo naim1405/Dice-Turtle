@@ -9,10 +9,11 @@ from player import Player
 game_is_on = True
 
 screen = Screen()
-screen.setup(width=800, height=800)
+screen.setup(width=750, height=750)
 screen.title("Dice")
 screen.listen()
 screen._root.iconbitmap("./resources/Dice.ico")
+screen.bgpic("./resources/dice_bg.gif")
 screen.addshape("./resources/dice_2.gif")
 screen.addshape("./resources/dice_1.gif")
 screen.addshape("./resources/dice_3.gif")
@@ -21,7 +22,7 @@ screen.addshape("./resources/dice_5.gif")
 screen.addshape("./resources/dice_6.gif")
 
 #Board
-board = Board() 
+# board = Board() 
 
 
 # Dice
