@@ -18,7 +18,7 @@ class Piece(Turtle):
         super().__init__()
         self.shape("circle")
         self.pensize(15)
-        self.pencolor("white")
+        self.pencolor("black")
         self.speed(0)
         self.player = player
         self.path = path
