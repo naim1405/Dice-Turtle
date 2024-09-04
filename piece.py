@@ -1,6 +1,7 @@
 from turtle import Turtle
 from dice import Dice
 from player import p
+from action import action_writer
 
 from player import Player
 
@@ -56,14 +57,11 @@ class Piece(Turtle):
                     Piece.next_player = True
                 else:
                     Piece.next_player = False
-                # is_moved = True
             else:
                 if Piece.piece_status[self.player] > 1:
-                    # is_moved = True
                     Piece.next_player = True
                     return
                 Piece.next_player = False
-                
                     
             if next_idx == self.path_len:
                 self.is_finished = True
@@ -74,6 +72,7 @@ class Piece(Turtle):
             if self.is_finished:
                 Piece.allow_moving = True
         if Piece.next_player:
+            action_writer.update_action(0)
             if Dice.current_value != 6:
                 p.handle_player_change()
             Piece.next_player = False

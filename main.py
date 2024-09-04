@@ -5,6 +5,7 @@ from turtle import Screen
 from piece_path import *
 from dice import Dice
 from player import Player, p
+from action import action_writer
 
 game_is_on = True
 
@@ -60,8 +61,8 @@ def handle_dice_roll():
         return
     Dice.allow_rolling = False
     dice.roll()
-
     Piece.allow_moving = True
+    action_writer.update_action(1)
     if Dice.current_value != 6:
         p.handle_player_change
 
