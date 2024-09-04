@@ -1,8 +1,9 @@
     1. create grid
     2. add one piece
     3. make the piece move
-4. add the dice
+    4. add the dice
     5. when it moves past it's home enter it to final path
-6. add more piece
-7. add option to chose piece 
-8. add player and piece under player
+    6. add more piece
+    7. add option to chose piece 
+    8. add player and piece under player
+9. detect overlap
