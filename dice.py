@@ -1,8 +1,11 @@
 from turtle import Turtle, mainloop
 from random import randint
-import time
 
 class Dice(Turtle):
+    prev_value = 0
+    current_value = 0
+    consecutive_six = 0
+    allow_rolling = True
     def __init__(self):
         super().__init__()
         self.penup()
@@ -10,27 +13,20 @@ class Dice(Turtle):
         self.goto(8,335)
         self.showturtle()
         self.shape(f"./resources/dice_5.gif")
-        self.prev_value = 0
-        self.current_value = 0
-        self.consecutive_six = 0
     def roll(self):
         random_dice = randint(1,6)
         if random_dice == 6:
-            self.consecutive_six += 1
+            Dice.consecutive_six += 1
         else:
-            self.consecutive_six = 0
-        if self.consecutive_six == 3:
-            self.consecutive_six -= 1
+            Dice.consecutive_six = 0
+        if Dice.consecutive_six == 3:
+            Dice.consecutive_six -= 1
             self.roll()
             return
-        self.prev_value = self.current_value
-        self.current_value = random_dice
+        Dice.prev_value = Dice.current_value
+        Dice.current_value = random_dice
         self.shape(f"./resources/dice_{self.current_value}.gif")
 
-    def get_dice_value(self):
-        return self.current_value
-
-        
 
 if __name__ == "__main__":
     from turtle import Screen
@@ -47,5 +43,3 @@ if __name__ == "__main__":
     screen.onkeypress(d.roll, " ")
 
     mainloop()
-
-        

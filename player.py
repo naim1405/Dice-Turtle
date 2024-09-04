@@ -26,3 +26,5 @@ class Player(Turtle):
         self.write(f"{Player.player_color[Player.current_player]}", font=("Arial", 24, "normal"))
 
     
+
+p = Player()

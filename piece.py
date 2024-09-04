@@ -1,8 +1,18 @@
 from turtle import Turtle
+from dice import Dice
+from player import p
 
 from player import Player
 
 class Piece(Turtle):
+    allow_moving = False
+    piece_status = {
+        0:4,
+        1:4,
+        2:4,
+        3:4,
+    }
+    next_player = True
     def __init__(self,player, path, inactive_pos, active_pos):
         super().__init__()
         self.shape("circle")
@@ -17,6 +27,8 @@ class Piece(Turtle):
         self.current_pos = -1
         self.is_active = True
         self.penup()
+        self.path_len = 56
+        self.is_finished = False
         if player == 0:
             self.fillcolor("green")
         if player == 1:
@@ -32,10 +44,37 @@ class Piece(Turtle):
         self.onclick(fun=self.handle_click)
 
     def handle_click(self,x,y):
-        self.move(1)
+        self.move()
         
-    def move(self, step):
-        if Player.current_player == self.player:
-            self.current_pos = self.current_pos + step
-            self.goto(self.path[self.current_pos])
-
+    def move(self):
+        if Player.current_player == self.player and Piece.allow_moving:
+            next_idx = self.current_pos + Dice.current_value
+            if next_idx <= self.path_len :
+                self.goto(self.path[next_idx])
+                self.current_pos = next_idx
+                if Dice.current_value != 6:
+                    Piece.next_player = True
+                else:
+                    Piece.next_player = False
+                # is_moved = True
+            else:
+                if Piece.piece_status[self.player] > 1:
+                    # is_moved = True
+                    Piece.next_player = True
+                    return
+                Piece.next_player = False
+                
+                    
+            if next_idx == self.path_len:
+                self.is_finished = True
+                Piece.piece_status[self.player] = Piece.piece_status[self.player] - 1
+            
+            Piece.allow_moving = False
+            Dice.allow_rolling = True
+            if self.is_finished:
+                Piece.allow_moving = True
+        if Piece.next_player:
+            if Dice.current_value != 6:
+                p.handle_player_change()
+            Piece.next_player = False
+        
