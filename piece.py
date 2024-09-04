@@ -28,6 +28,7 @@ class Piece(Turtle):
 
         # self.goto(self.path[self.current_pos])
         self.goto(inactive_pos)
+        self.speed(6)
         self.onclick(fun=self.handle_click)
 
     def handle_click(self,x,y):
