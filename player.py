@@ -18,7 +18,7 @@ class Player(Turtle):
     def handle_player_change(self):
         Player.current_player = (Player.current_player + 1) % 4
         self.clear()
-        self.goto(-300,340)
+        self.goto(-300,320)
         self.color("black")
         self.write(f"Player : ", font=("Arial", 24, "normal"))
         self.color(Player.player_color[Player.current_player])

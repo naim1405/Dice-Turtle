@@ -7,7 +7,7 @@ class Dice(Turtle):
         super().__init__()
         self.penup()
         self.hideturtle()
-        self.goto(8,360)
+        self.goto(8,335)
         self.showturtle()
         self.shape(f"./resources/dice_5.gif")
         self.prev_value = 0
