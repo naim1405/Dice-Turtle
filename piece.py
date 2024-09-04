@@ -17,13 +17,13 @@ class Piece(Turtle):
         self.current_pos = -1
         self.is_active = True
         self.penup()
-        if player == 1:
+        if player == 0:
             self.fillcolor("green")
-        if player == 2:
+        if player == 1:
             self.fillcolor("yellow")
-        if player == 3:
+        if player == 2:
             self.fillcolor("blue")
-        if player == 4:
+        if player == 3:
             self.fillcolor("red")
 
         # self.goto(self.path[self.current_pos])
