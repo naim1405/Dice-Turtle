@@ -1,4 +1,5 @@
 from turtle import Turtle, mainloop
+from player import Player
 
 class Action(Turtle):
     def __init__(self):
@@ -15,13 +16,13 @@ class Action(Turtle):
         self.color("black")
         self.write(f"Do: ", font=("Arial", 24, "normal"))
         self.forward(60)
-
+        self.color(Player.player_color[Player.current_player])
         if self.current_action == 0:
-            self.color("Red")
+            # self.color("Red")
             self.write(f"Roll Dice", font=("Arial", 24, "normal"))
             
         if self.current_action == 1:
-            self.color("Green")
+            # self.color("Green")
             self.write(f"Move Piece", font=("Arial", 24, "normal"))
     def update_action(self, value):
         self.current_action = value

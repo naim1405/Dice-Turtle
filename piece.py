@@ -76,9 +76,9 @@ class Piece(Turtle):
                 if self.is_finished:
                     Piece.allow_moving = True
             if Piece.next_player:
-                action_writer.update_action(0)
                 if Dice.current_value != 6:
                     p.handle_player_change()
+                action_writer.update_action(0)
                 Piece.next_player = False
 
         elif self.player == Player.current_player and (
@@ -87,9 +87,11 @@ class Piece(Turtle):
             self.is_active = True
             self.goto(self.active_pos)
             Dice.allow_rolling = True
+            action_writer.update_action(0)
             Piece.piece_status[self.player]["active"] += 1
 
         elif self.player == Player.current_player and not self.is_active:
             if Piece.piece_status[self.player]["active"] == 0:
                 p.handle_player_change()
                 Dice.allow_rolling = True
+                action_writer.update_action(0)

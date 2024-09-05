@@ -3,6 +3,7 @@ from turtle import Turtle
 class Player(Turtle):
     current_player = -1
     player_color = {
+        -1:"White",
         0:"Green",
         1:"Yellow",
         2:"Blue",
