@@ -1,10 +1,9 @@
 import turtle
-from board import Board
+# from board import Board
 from piece import Piece
 from turtle import Screen
-from piece_path import *
 from dice import Dice
-from player import Player, p
+from player import p
 from action import action_writer
 
 game_is_on = True
@@ -30,32 +29,6 @@ screen.addshape("./resources/dice_blank.gif")
 
 # Dice
 dice = Dice()
-
-
-#Player
-
-player_1 = []
-player_2 = []
-player_3 = []
-player_4 = []
-
-
-for i in range(4):
-    for j in range(4):
-        if i == 0:
-            _ = Piece(i,path_1, inactive_pos_1[j], active_pos_1[j])
-            player_1.append(_)
-        elif i == 1:
-            _ = Piece(i,path_2, inactive_pos_2[j], active_pos_2[j])
-            player_2.append(_)
-        elif i == 2:
-            _ = Piece(i,path_3, inactive_pos_3[j], active_pos_3[j])
-            player_3.append(_)
-        elif i == 3 :
-            _ = Piece(i,path_4, inactive_pos_4[j], active_pos_4[j])
-            player_4.append(_)
-    
-
 
 def handle_dice_roll():
     if not Dice.allow_rolling:

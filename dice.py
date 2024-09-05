@@ -17,6 +17,8 @@ class Dice(Turtle):
     def roll(self):
         # random_dice = randint(1,6)
         random_dice = secrets.randbelow(6) + 1
+        # debug
+        # random_dice = 6
         if random_dice == 6:
             Dice.consecutive_six += 1
         else:
@@ -25,6 +27,9 @@ class Dice(Turtle):
             Dice.consecutive_six -= 1
             self.roll()
             return
+            # debug
+            # random_dice = 5
+            # Dice.consecutive_six = 0
         Dice.prev_value = Dice.current_value
         Dice.current_value = random_dice
         self.shape(f"./resources/dice_{self.current_value}.gif")

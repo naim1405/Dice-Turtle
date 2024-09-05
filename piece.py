@@ -55,6 +55,7 @@ class Piece(Turtle):
                 if next_idx <= self.path_len:
                     self.goto(self.path[next_idx])
                     self.current_pos = next_idx
+                    check_overlap(self)
                     if Dice.current_value != 6:
                         Piece.next_player = True
                     else:
@@ -95,3 +96,43 @@ class Piece(Turtle):
                 p.handle_player_change()
                 Dice.allow_rolling = True
                 action_writer.update_action(0)
+
+
+    def set_inactive(self):
+        self.is_active = False
+        self.goto(self.inactive_pos)
+        
+    
+    
+from piece_path import *
+
+players = {
+    0:[],
+    1:[],
+    2:[],
+    3:[],
+}
+
+
+for i in range(4):
+    from piece import Piece
+    for j in range(4):
+        if i == 0:
+            _ = Piece(i,path_1, inactive_pos_1[j], active_pos_1[j])
+            players[0].append(_)
+        elif i == 1:
+            _ = Piece(i,path_2, inactive_pos_2[j], active_pos_2[j])
+            players[1].append(_)
+        elif i == 2:
+            _ = Piece(i,path_3, inactive_pos_3[j], active_pos_3[j])
+            players[2].append(_)
+        elif i == 3 :
+            _ = Piece(i,path_4, inactive_pos_4[j], active_pos_4[j])
+            players[3].append(_)
+    
+def check_overlap(moved_piece):
+    for (idx, pieces) in players.items():
+        if idx != Player.current_player:
+            for item in pieces:
+                if moved_piece.pos() == item.pos():
+                    item.set_inactive()

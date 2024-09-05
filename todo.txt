@@ -6,4 +6,4 @@
     6. add more piece
     7. add option to chose piece 
     8. add player and piece under player
-9. detect overlap
+    9. detect overlap
