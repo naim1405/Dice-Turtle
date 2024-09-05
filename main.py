@@ -22,6 +22,7 @@ screen.addshape("./resources/dice_3.gif")
 screen.addshape("./resources/dice_4.gif")
 screen.addshape("./resources/dice_5.gif")
 screen.addshape("./resources/dice_6.gif")
+screen.addshape("./resources/dice_blank.gif")
 
 #Board
 # board = Board() 

@@ -15,7 +15,6 @@ class Action(Turtle):
         self.color("black")
         self.write(f"Do: ", font=("Arial", 24, "normal"))
         self.forward(60)
-        print(self.current_action)
 
         if self.current_action == 0:
             self.color("Red")

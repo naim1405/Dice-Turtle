@@ -12,7 +12,7 @@ class Dice(Turtle):
         self.hideturtle()
         self.goto(8,335)
         self.showturtle()
-        self.shape(f"./resources/dice_5.gif")
+        self.shape(f"./resources/dice_blank.gif")
     def roll(self):
         random_dice = randint(1,6)
         if random_dice == 6:
