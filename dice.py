@@ -1,5 +1,6 @@
 from turtle import Turtle, mainloop
 from random import randint
+import secrets
 
 class Dice(Turtle):
     prev_value = 0
@@ -14,7 +15,8 @@ class Dice(Turtle):
         self.showturtle()
         self.shape(f"./resources/dice_blank.gif")
     def roll(self):
-        random_dice = randint(1,6)
+        # random_dice = randint(1,6)
+        random_dice = secrets.randbelow(6) + 1
         if random_dice == 6:
             Dice.consecutive_six += 1
         else:
