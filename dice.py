@@ -15,11 +15,10 @@ class Dice(Turtle):
         self.showturtle()
         self.shape(f"./resources/dice_blank.gif")
     def roll(self):
-        import random
-        # Weighted odds: 1:5, 2:7, 3:10, 4:15, 5:20, 6:25
-        dice_numbers = [1, 2, 3, 4, 5, 6]
-        weights = [5, 7, 10, 15, 20, 25]
-        random_dice = random.choices(dice_numbers, weights=weights, k=1)[0]
+        # random_dice = randint(1,6)
+        random_dice = secrets.randbelow(6) + 1
+        # debug
+        # random_dice = 6
         if random_dice == 6:
             Dice.consecutive_six += 1
         else:
@@ -28,6 +27,9 @@ class Dice(Turtle):
             Dice.consecutive_six -= 1
             self.roll()
             return
+            # debug
+            # random_dice = 5
+            # Dice.consecutive_six = 0
         Dice.prev_value = Dice.current_value
         Dice.current_value = random_dice
         self.shape(f"./resources/dice_{self.current_value}.gif")
